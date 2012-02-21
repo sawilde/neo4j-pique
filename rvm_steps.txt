@@ -1,0 +1,5 @@
+rvm use 1.9.2-p290
+rvm create gemset neo4j-pique
+touch .rvmrc
+[edit .rvmrc add "rvm use 1.9.2@neo4j-pique"]
+
