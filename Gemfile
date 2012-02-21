@@ -36,3 +36,21 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'thin'
+
+group :development do
+  gem 'heroku'
+  gem 'foreman'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '2.8.1'
+  gem 'spork', '~> 0.9.0'
+end
+
+group :test do
+  gem 'mocha', '0.10.4', :require => false
+end
+
+

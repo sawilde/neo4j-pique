@@ -4,4 +4,5 @@ touch .rvmrc
 [edit .rvmrc add "rvm use 1.9.2@neo4j-pique"]
 gem install heroku
 gem install rails
-
+rails new .
+[add some favorite gems - devcenter.heroku.com/articles/rails3]
