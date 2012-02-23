@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Neo4jPique</title>
+  <title>Neo4j-Pique</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script src="http://platform.twitter.com/anywhere.js?id=UZoVZZpYr3kj3HkcKiGVDQ&v=1" type="text/javascript"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <script type="text/javascript">
+    twttr.anywhere.config({ callbackURL: "http://<%= request.host %>:<%= request.port %>" });
+  </script>
+  <div>
+    <span id="login"></span>
+    <script type="text/javascript">
+      twttr.anywhere(function (T){
+          T("#login").connectButton({
+              size: "large",
+              authComplete: function(user){
+                alert("signed in");
+              },
+              signOut: function(){
+                alert("signed out");
+              }
+            });
+          });
+    </script>
+  </div>
 
 <%= yield %>
 
