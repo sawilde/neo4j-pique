@@ -54,4 +54,4 @@ group :test do
   gem 'mocha', '0.10.4', :require => false
 end
 
-
+gem 'pg'
