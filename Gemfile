@@ -5,8 +5,9 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development, :test do
+group :test do
   gem 'sqlite3'
+  gem 'mocha', '0.10.4', :require => false
 end
 
 # Gems used only for assets and not required
@@ -50,8 +51,11 @@ group :development, :test do
   gem 'spork', '~> 0.9.0'
 end
 
-group :test do
-  gem 'mocha', '0.10.4', :require => false
+group :development, :production do
+  gem 'pg'
+  gem 'dalli'
 end
 
-gem 'pg'
+gem 'neography', '~> 0.0.22'
+gem 'neoid', '~> 0.0.2'
+

@@ -34,4 +34,7 @@ Neo4jPique::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  ENV["NEO4J_URL"] = 'http://localhost:7574'
+  
 end
