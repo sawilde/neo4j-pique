@@ -1,6 +1,13 @@
 Neo4jPique::Application.routes.draw do
   get "main/index"
 
+  namespace :api do
+    namespace :users do
+      post :register
+      post :update_friends
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -10,7 +17,7 @@ Neo4jPique::Application.routes.draw do
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  # This route can be invoked with purchasel_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

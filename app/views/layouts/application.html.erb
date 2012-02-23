@@ -9,22 +9,47 @@
 </head>
 <body>
   <script type="text/javascript">
-    twttr.anywhere.config({ callbackURL: "http://<%= request.host %>:<%= request.port %>" });
+    twttr.anywhere.config({ callbackURL: "<%= @hostname %>" });
   </script>
   <div>
     <span id="login"></span>
     <script type="text/javascript">
+
+      function registerUser(twitter_id) {
+        $.post('/api/users/register.json', { twitter_id: twitter_id } )
+          .success(function(data) {
+            console.log(data);
+            if (data.update_friends) {
+              updateFriends(twitter_id);
+            }
+          });      
+      }
+      
+      function updateFriends(twitter_id){
+        $.getJSON("http://api.twitter.com/1/friends/ids.json?user_id=" + twitter_id + "&callback=?", function(data){
+          console.log(data);
+          $.post('/api/users/update_friends.json', { twitter_data: data } )
+            .success(function(data) {
+              console.log(data);
+            });      
+          });           
+      }
+      
       twttr.anywhere(function (T){
           T("#login").connectButton({
               size: "large",
               authComplete: function(user){
-                alert("signed in");
+                registerUser(T.currentUser.data('id'));
               },
               signOut: function(){
                 alert("signed out");
               }
             });
-          });
+
+          if (T.isConnected()) {
+            registerUser(T.currentUser.data('id'));
+          }
+        });
     </script>
   </div>
 
