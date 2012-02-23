@@ -34,4 +34,7 @@ Neo4jPique::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  ENV["NEO4J_URL"] = 'http://localhost:7480'
+
 end

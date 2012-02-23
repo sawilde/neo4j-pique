@@ -1,4 +1,5 @@
 require 'spork'
+require 'neoid'
 
 #require 'simplecov'
 #SimpleCov.start
@@ -20,6 +21,11 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
+
+    config.before :all do
+      RestClient.delete "#{ENV["NEO4J_URL"]}/cleandb/secret-key"
+    end
+
     # == Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

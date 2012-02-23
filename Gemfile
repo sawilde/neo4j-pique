@@ -7,7 +7,7 @@ gem 'rails', '3.2.1'
 
 group :test do
   gem 'sqlite3'
-  gem 'mocha', '0.10.4', :require => false
+  #gem 'mocha', '0.10.4', :require => false
 end
 
 # Gems used only for assets and not required
@@ -56,6 +56,8 @@ group :development, :production do
   gem 'dalli'
 end
 
+gem 'rest-client'
 gem 'neography', '~> 0.0.22'
 gem 'neoid', '~> 0.0.2'
+gem 'awesome_print'
 
