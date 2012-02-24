@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     @hostname = "http://" + request.host + port_str 
   end
 
+  def	get_twitter_api_key
+    @twitter_api_key = ENV['TWITTER_API_KEY']
+  end
+  
 end
