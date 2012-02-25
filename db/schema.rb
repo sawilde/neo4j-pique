@@ -11,6 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120225112642) do
+
+  create_table "follows", :force => true do |t|
+    t.integer  "user_id",    :limit => 8
+    t.integer  "friend_id",  :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.integer  "twitter_id",        :limit => 8
+    t.string   "screen_name"
+    t.string   "profile_image_url"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "users", ["twitter_id"], :name => "index_users_on_twitter_id", :unique => true
 
 end
