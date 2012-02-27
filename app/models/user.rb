@@ -4,6 +4,21 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :friends, :through => :follows
 
+  has_many :likes
+  has_many :tags, :through => :likes
+
+  def likes?(tag_id)
+    likes.where(tag_id: tag_id).exists?
+  end
+  
+  def like!(tag)
+    tags << tag unless likes?(tag.id)
+  end
+  
+  def unlike!(tag)
+    likes.where(tag_id: tag.id, user_id: self.id).destroy_all
+  end
+  
   def to_neo
     neo_properties_to_hash(%w( twitter_id ))
   end
@@ -19,7 +34,7 @@ class User < ActiveRecord::Base
       user = User.get_user_by_twitter_id(userdata[:twitter_id])
       
       if user.nil?
-        user = User.new(:twitter_id => userdata[:twitter_id])      
+        user = User.new( {:twitter_id => userdata[:twitter_id] })
       end
       
       user.screen_name = userdata[:screen_name]
@@ -27,6 +42,7 @@ class User < ActiveRecord::Base
     
       user.save
       
+      user
     end
   
     def refresh_friends(twitter_id, friend_ids)
@@ -36,7 +52,7 @@ class User < ActiveRecord::Base
       if user
       
         current_ids = user.friends.collect { |x| x.twitter_id }
-        
+                
         # keep the relationships up to date but only amongst users
         # who have accessed the application via twitter 
 
@@ -49,6 +65,7 @@ class User < ActiveRecord::Base
         user.friends += new_friends 
                 
         user.save
+        
 
         # get those in current_ids not in friend_ids - remove them        
         old_friends = current_ids

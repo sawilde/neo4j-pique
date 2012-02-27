@@ -26,6 +26,15 @@ Spork.prefork do
       RestClient.delete "#{ENV["NEO4J_URL"]}/cleandb/secret-key"
     end
 
+    # when the neoid gem updates ....
+    # config.before :all do
+    #   Neoid.clean_db(:yes_i_am_sure)
+    # end
+
+    # config.before :each do
+    #   Neoid.reset_cached_variables
+    # end
+
     # == Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

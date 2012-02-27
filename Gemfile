@@ -44,11 +44,13 @@ gem 'thin'
 group :development do
   gem 'heroku'
   gem 'foreman'
+  #gem 'ruby-debug-base'
+  #gem 'ruby-debug-ide'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.8.1'
-  gem 'spork', '~> 0.9.0'
+  gem 'rspec-rails'
+  gem 'spork'
 end
 
 group :development, :production do
@@ -58,6 +60,6 @@ end
 
 gem 'rest-client'
 gem 'neography', '~> 0.0.22'
-gem 'neoid', '~> 0.0.2'
+gem 'neoid'
 gem 'awesome_print'
 
