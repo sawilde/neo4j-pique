@@ -1,38 +1,4 @@
 <div>
-    <span id="login"></span>
-    <script type="text/javascript">
-
-      function registerUser(twitter_id, screen_name, profile_image_url) {
-        $.post('<%= "#{api_users_register_path}.json" %>', { twitter_id: twitter_id, screen_name: screen_name, profile_image_url: profile_image_url } )
-          .success(function(data) {
-            updateFriends(twitter_id);
-          });      
-      }
-      
-      function updateFriends(twitter_id){
-        $.getJSON("http://api.twitter.com/1/friends/ids.json?user_id=" + twitter_id + "&callback=?", function(data){
-          console.log(data);
-          $.post('<%= "#{api_users_update_friends_path}.json" %>', { twitter_id: twitter_id, friend_ids: data.ids } )
-            .success(function(data) {
-              // this is where we need to hook in the sign-in complete action
-            });      
-          });           
-      }
-      
-      twttr.anywhere(function (T){
-          T("#login").connectButton({
-              size: "large",
-              authComplete: function(user){
-                registerUser(T.currentUser.data('id'), T.currentUser.data('screen_name'), T.currentUser.data('profile_image_url'));
-              },
-              signOut: function(){
-                // this is where we need to hook in the sign-out action
-              }
-            });
-
-          if (T.isConnected()) {
-            registerUser(T.currentUser.data('id'), T.currentUser.data('screen_name'), T.currentUser.data('profile_image_url'));
-          }
-        });
-    </script>
-  </div>
+  <span id="login" data-register-path='<%= "#{api_users_register_path}.json" %>' 
+    data-updatefriends-path='<%= "#{api_users_update_friends_path}.json" %>'></span>
+</div>

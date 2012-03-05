@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  var twitter_login = new TwitterLoginController("#login");
+  twitter_login.apply();
+});
