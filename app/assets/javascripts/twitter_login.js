@@ -1,22 +1,32 @@
-function TwitterLoginController(login_div) {
+function TwitterLoginController(login_element, vote_controller) {
 
-  var register_path = $(login_div).attr('data-register-path');
-  var update_friends_path = $(login_div).attr('data-updatefriends-path');
+  var voteController = vote_controller;
+  var register_path = $(login_element).attr('data-register-path');
+  var update_friends_path = $(login_element).attr('data-updatefriends-path');
 
   this.apply = function(){
     var controller = this;
+    $(login_element + " #sign-out").hide();
+    $(login_element + " #sign-out").click(function(event){
+      $(this).hide();
+      twttr.anywhere.signOut();
+    });
+
     twttr.anywhere(function (T){
-      T(login_div).connectButton({
+      T(login_element + ' #sign-in').connectButton({
         size: "large",
         authComplete: function(user){
+          $(login_element + " #sign-out").show();
           controller.registerUser(T.currentUser.data('id'), T.currentUser.data('screen_name'), T.currentUser.data('profile_image_url'));
         },
         signOut: function(){
-            // this is where we need to hook in the sign-out action
+          // this is where we need to hook in the sign-out action
+          voteController.clearUserId();
         }
       });
 
       if (T.isConnected()) {
+        $(login_element + " #sign-out").show();
         controller.registerUser(T.currentUser.data('id'), T.currentUser.data('screen_name'), T.currentUser.data('profile_image_url'));
       }
     });
@@ -36,6 +46,7 @@ function TwitterLoginController(login_div) {
       $.post(update_friends_path, { twitter_id: twitter_id, friend_ids: data.ids } )
         .success(function(data) {
           // this is where we need to hook in the sign-in complete action
+          voteController.setUserId(twitter_id);
       });      
     });           
   }

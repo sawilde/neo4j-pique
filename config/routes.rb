@@ -6,6 +6,11 @@ Neo4jPique::Application.routes.draw do
       post :register
       post :update_friends
     end
+    namespace :tags do
+      post :view_likes
+      post :toggle_like
+    end
+
   end
   
   # The priority is based upon order of creation:

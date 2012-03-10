@@ -15,7 +15,7 @@ class Api::TagsController < ApplicationController
       format.json do
         ap params
               
-        render json: {you: true, friends: ['fred', 'paul'], count: 0}, status: :created
+        render json: {you: true, friends: ['fred', 'paul'], count: 234}, status: :created
       end
     end
   end

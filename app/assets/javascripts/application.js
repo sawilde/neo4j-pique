@@ -15,6 +15,10 @@
 //= require_tree .
 
 $(document).ready(function() {
-  var twitter_login = new TwitterLoginController("#login");
+  var vote_controller = new VoteManagerController('#votes');
+
+  var twitter_login = new TwitterLoginController("#login", vote_controller);
   twitter_login.apply();
+
+  vote_controller.apply();
 });
