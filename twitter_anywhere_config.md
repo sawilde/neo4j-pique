@@ -12,8 +12,8 @@ First it needs to be added to the development environment
 
 e.g. to the ~/.bashrc file add the following entry
 
-export TWITTER_API_KEY=<consumer-key>
+    export TWITTER_API_KEY=<consumer-key>
 
 If you are using Heroku then you can use the following to add it your production environment
 
-heroku config:add TWITTER_API_KEY=<consumer-key> 
+    heroku config:add TWITTER_API_KEY=<consumer-key> 
