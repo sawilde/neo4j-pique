@@ -37,7 +37,7 @@ describe User do
   describe ".refresh_friends" do
     subject { User.refresh_friends(twitter_id, friend_ids) }
     let(:twitter_id) { 1 }
-    let(:friend_ids) { [2, 3] }
+    let(:friend_ids) { ["2", "3"] }
 
     before do
       User.stub!('where').with(:twitter_id => 1).and_return([ found_user ])

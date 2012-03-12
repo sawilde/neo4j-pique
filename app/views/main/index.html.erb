@@ -1,5 +1,5 @@
 <h1>Welcome</h1>
-<p>Login to Neo4j-Pique to see how some of your twitter friends i.e. people you follow have 'liked' a thing.</p>
+<p>Login to Neo4j-Pique to see how some of your twitter friends, i.e. people you follow, have 'liked' a thing.</p>
 <%= render :partial => 'main/common/login', :locals => { } %>
 <hr/>
 <div id="votes" data-toggle-like-path='<%= "#{api_tags_toggle_like_path}.json" %>' 
@@ -7,4 +7,7 @@
   <%= render :partial => 'main/common/like', :locals => { :tag => 'Apples' } %>
   <%= render :partial => 'main/common/like', :locals => { :tag => 'Oranges' } %>
   <%= render :partial => 'main/common/like', :locals => { :tag => 'Pears' } %>
+  <%= render :partial => 'main/common/like', :locals => { :tag => 'Bananas' } %>
+  <%= render :partial => 'main/common/like', :locals => { :tag => 'Grapes' } %>
+  <%= render :partial => 'main/common/like', :locals => { :tag => 'Strawberries' } %>
 </div>

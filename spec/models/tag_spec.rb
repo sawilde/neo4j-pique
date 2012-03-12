@@ -9,7 +9,7 @@ describe Tag do
 
   describe ".create_or_update_tag" do
     subject { Tag.create_or_update_tag(tagdata) }
-    let(:tagdata) { {:name => 'tag_name'} }
+    let(:tagdata) { {:tag_name => 'tag_name'} }
     let(:tag) { mock_model(Tag) }
 
     before do
@@ -20,7 +20,7 @@ describe Tag do
     context "when tag not previously registered" do
       before do
         Tag.stub_chain("new") { tag }
-        tag.should_receive(:name=).with(tagdata[:name])
+        tag.should_receive(:name=).with(tagdata[:tag_name])
       end
       let(:found_tag) { nil }
       it { expect{subject}.not_to raise_error }

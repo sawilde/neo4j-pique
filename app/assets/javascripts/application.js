@@ -16,9 +16,9 @@
 
 $(document).ready(function() {
   var vote_controller = new VoteManagerController('#votes');
+  vote_controller.apply();
 
   var twitter_login = new TwitterLoginController("#login", vote_controller);
   twitter_login.apply();
 
-  vote_controller.apply();
 });
