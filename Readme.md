@@ -10,4 +10,4 @@ You can see the total likes of a 'thing' and who of the people you follow also l
 
 To prepare Neo4j for dev and test follow the instruction in the neo4j folder.
 
-To prepare Twitter @anywhere follow the (instructions.)[twitter_anywhere_config.md]
+To prepare Twitter @anywhere follow the [instructions.](twitter_anywhere_config.md)
