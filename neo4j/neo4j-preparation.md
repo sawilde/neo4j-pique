@@ -8,26 +8,26 @@ Test it works by executing the neo4j.sh as directed in the instructions.
 
 Next is to make versions of neo4j available to just your application without having multiple copies populating your hard drive or with them interfering with each other; the following was paraphrased from [neoid](https://github.com/elado/neoid).
 
-> mkdir dev
-> cd dev
-> ln -s ~/apps/neo4j-community-1.6/bin bin
-> ln -s ~/apps/neo4j-community-1.6/lib lib
-> ln -s ~/apps/neo4j-community-1.6/plugins plugins
-> ln -s ~/apps/neo4j-community-1.6/system system
-> mkdir conf
-> cp ~/apps/neo4j-community-1.6/conf/* conf
-> mkdir data
-> cd ..
-> mkdir test
-> cd test
-> ln -s ~/apps/neo4j-community-1.6/bin bin
-> ln -s ~/apps/neo4j-community-1.6/lib lib
-> ln -s ~/apps/neo4j-community-1.6/plugins plugins
-> ln -s ~/apps/neo4j-community-1.6/system system
-> mkdir conf
-> cp ~/apps/neo4j-community-1.6/conf/* conf
-> mkdir data
-> cd ..
+    mkdir dev 
+    cd dev
+    ln -s ~/apps/neo4j-community-1.6/bin bin
+    ln -s ~/apps/neo4j-community-1.6/lib lib
+    ln -s ~/apps/neo4j-community-1.6/plugins plugins
+    ln -s ~/apps/neo4j-community-1.6/system system
+    mkdir conf
+    cp ~/apps/neo4j-community-1.6/conf/* conf
+    mkdir data
+    cd ..
+    mkdir test
+    cd test
+    ln -s ~/apps/neo4j-community-1.6/bin bin
+    ln -s ~/apps/neo4j-community-1.6/lib lib
+    ln -s ~/apps/neo4j-community-1.6/plugins plugins
+    ln -s ~/apps/neo4j-community-1.6/system system
+    mkdir conf
+    cp ~/apps/neo4j-community-1.6/conf/* conf
+    mkdir data
+    cd ..
 
 Then we need to make them run on individual ports so we can control which instance is being used during development and (if necessary) test.
 
